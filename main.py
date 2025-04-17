@@ -1,13 +1,21 @@
-from stats import get_num_words, get_chars_dict
+from stats import get_num_words, get_chars_dict, get_sorted_lod
 
 
 def main():
+    print("============ BOOKBOT ============")
     book_path = "books/frankenstein.txt"
+    print(f"Analyzing book found at {book_path}")
     text = get_book_text(book_path)
     num_words = get_num_words(text)
     chars_dict = get_chars_dict(text)
-    print(f"{num_words} words found in the document")
-    print(chars_dict)
+    print("----------- Word Count ----------")
+    print(f"Found {num_words} total words")
+#    print(chars_dict)
+    print("--------- Character Count -------")
+    sorted_lod = get_sorted_lod(chars_dict)
+    #print(f"Sorted list of dictionaries: {sorted_lod}")
+    for i in sorted_lod:
+        print(f"{i['char']}: {i['count']}")
 
 
 def get_book_text(path):
